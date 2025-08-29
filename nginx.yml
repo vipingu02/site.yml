@@ -1,0 +1,16 @@
+---
+- name: Install NGINX on Linux
+  hosts: myservers
+  become: yes
+  tasks:
+    - name: Install NGINX (RHEL/CentOS/Rocky)
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Ensure NGINX is running and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
