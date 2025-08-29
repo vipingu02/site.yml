@@ -3,9 +3,9 @@
   hosts: myservers
   become: yes   # Run as root
   tasks:
-    - name: Create user "rahul"
+    - name: Create user "brijesh"
       user:
-        name: rahul
+        name: brijesh
         comment: "Application User"
         shell: /bin/bash
         password: "{{ 'MySecurePassword' | password_hash('sha512') }}"
