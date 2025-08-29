@@ -1,7 +1,12 @@
 ---
-- hosts: myservers
-  become: true
-  task:
-    - name: print OS information
-      ansible.builtin.package:
-        name: nginx
+- name: Create a user on Linux
+  hosts: myservers
+  become: yes   # Run as root
+  tasks:
+    - name: Create user "rahul"
+      user:
+        name: rahul
+        comment: "Application User"
+        shell: /bin/bash
+        password: "{{ 'MySecurePassword' | password_hash('sha512') }}"
+        create_home: yes
