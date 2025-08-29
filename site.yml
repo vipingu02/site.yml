@@ -1,5 +1,5 @@
 ---
-- hosts: my_servers
+- hosts: myservers
   become: true
   task:
     - name: print OS information
